@@ -1,4 +1,4 @@
-#Solana Wallet React Application 💸
+# Solana Wallet React Application 💸
 
 This project was a tutorial from [Figment Learn](https://learn.figment.io/tutorials/chakra-ui-with-solana-dapps)
 
@@ -9,6 +9,12 @@ If you have any issues you can make an issue on this repository and I'll try my 
 2. Airdrop tokens to wallet.
 3. Greet yourself and other people with counter.
 4. View transaction history.
+
+### Tech Stack 
+1. JavaScript 
+2. React 
+3. NodeJS
+4. ChakraUI
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
