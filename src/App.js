@@ -11,7 +11,12 @@ import {
   Button,
   useToast,
   Heading,
-  Code
+  Code,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import * as web3 from "@solana/web3.js";
@@ -89,34 +94,55 @@ function Home() {
   return (
     <Box textAlign="center" fontSize="xl">
       <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        {publicKey && (
-          <VStack spacing={8}>
-            <Text>Wallet Public Key: {publicKey.toBase58()}</Text>
-            <Text>
-              Balance:{" "}
-              {account
-                ? account.lamports / web3.LAMPORTS_PER_SOL + " SOL"
-                : "Loading.."}
-            </Text>
-            <Button onClick={getAirdrop} isLoading={airdropProcessing}>
-              Get Airdrop of 1 SOL
-            </Button>
-            <Greet />
-            <Heading>Transactions</Heading>
-            {transactions && (
-              <VStack>
-                {transactions.map((v, i, arr) => (
-                  <HStack key={"transaction-" + i}>
-                    <Text>Signature: </Text>
-                    <Code>{v.signature}</Code>
-                  </HStack>
-                ))}
-              </VStack>
-            )}
-          </VStack>
-        )}
-        {!publicKey && <WalletMultiButton />}
+        <Tabs variant="soft-rounded" colorScheme="green">
+          <TabList width="full">
+            <HStack justify="space-between" width="full">
+              <HStack>
+                <Tab>Home</Tab>
+                <Tab>Transaction History</Tab>
+              </HStack>
+              <ColorModeSwitcher justifySelf="flex-end" />
+            </HStack>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              {publicKey && (
+                <VStack spacing={8}>
+                  <Text>Wallet Public Key: {publicKey.toBase58()}</Text>
+                  <Text>
+                    Balance:{" "}
+                    {account
+                      ? account.lamports / web3.LAMPORTS_PER_SOL + " SOL"
+                      : "Loading.."}
+                  </Text>
+                  <Button onClick={getAirdrop} isLoading={airdropProcessing}>
+                    Get Airdrop of 1 SOL
+                  </Button>
+                  <Greet />
+                </VStack>
+              )}
+              {!publicKey && <WalletMultiButton />}
+            </TabPanel>
+            <TabPanel>
+              {publicKey && (
+                <VStack spacing={8}>
+                  <Heading>Transactions</Heading>
+                  {transactions && (
+                    <VStack>
+                      {transactions.map((v, i, arr) => (
+                        <HStack key={"transaction-" + i}>
+                          <Text>Signature: </Text>
+                          <Code>{v.signature}</Code>
+                        </HStack>
+                      ))}
+                    </VStack>
+                  )}
+                </VStack>
+              )}
+              {!publicKey && <WalletMultiButton />}
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Grid>
     </Box>
   );
