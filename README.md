@@ -1,3 +1,15 @@
+#Solana Wallet React Application 💸
+
+This project was a tutorial from [Figment Learn](https://learn.figment.io/tutorials/chakra-ui-with-solana-dapps)
+
+If you have any issues you can make an issue on this repository and I'll try my best to assist :). 
+
+## Functionality of Application :
+1. Connect to non-custodial wallet.
+2. Airdrop tokens to wallet.
+3. Greet yourself and other people with counter.
+4. View transaction history.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
